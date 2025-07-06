@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dev Sky Solar - Footer</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .footer-main {
+      background: linear-gradient(to right, #003d73, #00549b);
+      color: white;
+      padding: 40px 20px 10px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-left img {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      flex: 2;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-column a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column a img {
+      width: 27px;
+      height: 28px;
+    }
+
+    .footer-column a:hover {
+      text-decoration: none;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .footer-right .call-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #003866;
+      border-radius: 30px;
+      padding: 14px 22px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .footer-right .call-box img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .footer-bottom {
+      background-color: #002c57;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: #ddd;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .footer-right {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <footer class="footer-main">
+    <div class="footer-container">
+      <!-- Left logo -->
+      <div class="footer-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Dev Sky Solar Logo">
+      </div>
+
+      <!-- Middle links -->
+      <div class="footer-links">
+        <div class="footer-column">
+          <a href="#"><img src="{{ url_for('static', filename='icons/pr.png') }}" alt="About"> About us</a>
+          <a href="#"><img src="{{ url_for('static', filename='icons/pr.png') }}" alt="Privacy"> Privacy Policy</a>
+          <a href="#"><img src="{{ url_for('static', filename='icons/c.png') }}" alt="Copyright"> Copyright Policy</a>
+        </div>
+        <div class="footer-column">
+          <a href="#"><img src="{{ url_for('static', filename='icons/ht.png') }}" alt="Terms"> Terms & Conditions</a>
+          <a href="#"><img src="{{ url_for('static', filename='icons/ht.png') }}" alt="Hyperlink"> Hyperlinking Policy</a>
+        </div>
+      </div>
+
+      <!-- Right call -->
+      <div class="footer-right">
+        <a href="tel:9302397908" class="call-box">
+          <img src="{{ url_for('static', filename='icons/ph.png') }}" alt="Call">
+          Contact us
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Dev Sky Solar | We build. You shine.
+    </div>
+  </footer>
+
+</body>
+</html>

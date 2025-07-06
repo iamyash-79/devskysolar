@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dev Sky Solar - Topbar</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background-color: #004b8d;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-left img {
+      height: 28px;
+    }
+
+    .brand-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .top-right {
+      display: flex;
+      gap: 14px;
+    }
+
+    .top-right a {
+      background-color: transparent;
+      border: none;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .top-right a:hover {
+      transform: scale(1.1);
+    }
+
+    .top-right img {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .top-right {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ TOP BAR -->
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Dev Sky Logo">
+      <span class="brand-text">Dev Sky Solar</span>
+    </div>
+    <div class="top-right">
+      <a href="https://wa.me/919302397908" target="_blank">
+        <img src="{{ url_for('static', filename='icons/wh.png') }}" alt="Whatsapp">
+      </a>
+      <a href="https://instagram.com/devskysolar" target="_blank">
+        <img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram">
+      </a>
+      <a href="https://facebook.com" target="_blank">
+        <img src="{{ url_for('static', filename='icons/facebook.png') }}" alt="Facebook">
+      </a>
+      <a href="https://linkedin.com" target="_blank">
+        <img src="{{ url_for('static', filename='icons/in.png') }}" alt="LinkedIn">
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="{{ url_for('static', filename='icons/X.png') }}" alt="Twitter">
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

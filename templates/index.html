@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Sky Solar - We build. You shine.</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Fixed Topbar */
+    .top-bar {
+      background-color: #004b8d;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-left img {
+      height: 28px;
+    }
+
+    .brand-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .top-right {
+      display: flex;
+      gap: 12px;
+    }
+
+    .top-right a {
+      border: 1px solid #fff;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .top-right a:hover {
+      background: #0061c2;
+    }
+
+    .top-right img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ✅ Hero with Slideshow */
+    .hero {
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      transition: background-image 1s ease-in-out;
+      padding-top: 60px; /* To offset fixed topbar */
+    }
+
+    .hero-left h1 {
+      font-size: 3rem;
+      color: #005bbb; /* restored original color */
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    }
+
+    .hero-left p {
+      color: #222; /* light black for better contrast */
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+    }
+
+    .btn {
+      background: #005bbb;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #00449d;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 60px 20px;
+      background: #f9f9f9;
+    }
+
+    .services h2 {
+      color: #005bbb;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 24px;
+      font-size: 1rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .top-right {
+        align-self: flex-end;
+      }
+
+      .hero-left h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-left p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Top Bar -->
+  {% include 'topbar.html' %}
+
+  <!-- ✅ Hero Section with Slideshow -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <h1>We build. You shine.</h1>
+      <p>Your solar journey starts with us.</p>
+      <a href="#services" class="btn">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- ✅ Our Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">Complete Solar Plant Installation (On-Grid / Off-Grid / Hybrid)</div>
+        <div class="service-card">Site Survey & Customized Design</div>
+        <div class="service-card">Structure Fabrication (GI / MS / Aluminum)</div>
+        <div class="service-card">High-Quality Panel & Inverter Supply</div>
+        <div class="service-card">Electrical Work & Net Metering Support</div>
+        <div class="service-card">Project Execution for EPCs, Builders & Corporates</div>
+        <div class="service-card">Maintenance & System Upgrades</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Bottom Bar -->
+  {% include 'bottom.html' %}
+
+  <!-- ✅ JavaScript for Slideshow -->
+  <script>
+    const images = [
+      "{{ url_for('static', filename='images/hero1.jpg') }}",
+      "{{ url_for('static', filename='images/hero2.jpg') }}",
+      "{{ url_for('static', filename='images/hero3.jpg') }}",
+      "{{ url_for('static', filename='images/hero4.jpg') }}"
+    ];
+
+    let current = 0;
+    const hero = document.getElementById('hero');
+
+    function changeBackground() {
+      hero.style.backgroundImage = `url('${images[current]}')`;
+      current = (current + 1) % images.length;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 5000);
+  </script>
+
+</body>
+</html>
