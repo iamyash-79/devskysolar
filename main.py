@@ -14,19 +14,19 @@ app.secret_key = 'your_secret_key'
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s: %(message)s')
 
 # ---------- EMAIL SETTINGS (cPanel Mail) ----------
-MAIL_HOST = "mail.devskysolar.in"   # ✅ Your cPanel mail server
+MAIL_HOST = "host"   # ✅ Your cPanel mail server
 MAIL_PORT = 465                     # SSL Port
-MAIL_USER = "contact@devskysolar.in"
-MAIL_PASSWORD = "Devskysolar@93"    # Your cPanel mail password
+MAIL_USER = example@gmail.in"
+MAIL_PASSWORD = "yourpassword"    # Your cPanel mail password
 MAIL_FROM = MAIL_USER
-MAIL_TO = "devskysolar@gmail.com"   # Receiver email
+MAIL_TO = "dexample@gmail.com"   # Receiver email
 
 # ---------- MYSQL CONNECTION ----------
 def get_mysql_connection():
     return mysql.connector.connect(
         host="localhost",
         user="devskyso_traffic",
-        password="Devskysolar@93",
+        password="password",
         database="devskyso_traffic",
         autocommit=False
     )
@@ -324,3 +324,4 @@ def logout():
 # ---------- Run ----------
 if __name__ == "__main__":
     app.run(debug=True)
+
