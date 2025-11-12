@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solar Savings Calculator | Dev Sky Solar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --blue: #0077B6;
+  --dark-blue: #023E8A;
+  --sky: #E3F2FD;
+  --white: #ffffff;
+  --gradient: linear-gradient(135deg, #0077B6, #00B4D8);
+  --text: #222;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: var(--sky);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header / Main container */
+.container {
+  max-width: 950px;
+  margin: 60px auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px 35px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+form {
+  display: grid;
+  gap: 18px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.input, select, button, input[type=number] {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1.5px solid #dcdcdc;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus, select:focus, input[type=number]:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.size-input {
+  flex: 1;
+}
+
+.unit-select {
+  width: 130px;
+}
+
+button {
+  background: var(--gradient);
+  color: var(--white);
+  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+}
+
+.result {
+  margin-top: 25px;
+  background: #F7FBFF;
+  border-radius: 14px;
+  padding: 20px 25px;
+  display: none;
+  border-left: 5px solid var(--blue);
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result div {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.note {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+@media (max-width: 650px) {
+  .container { padding: 25px 20px; margin: 25px; }
+  .row { flex-direction: column; }
+  .unit-select { width: 100%; }
+  button { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+{% include 'header.html' %}
+
+<div class="container">
+  <h2><i class="fa-solid fa-solar-panel"></i> Solar Savings Calculator</h2>
+  <div class="subtitle">Estimate cost, subsidy & payback for Chhattisgarh (min 3 kW for subsidy)</div>
+
+  <form id="form">
+    <div>
+      <label>State</label>
+      <input class="input" type="text" value="Chhattisgarh" readonly>
+    </div>
+
+    <div>
+      <label for="type">Connection Type</label>
+      <select id="type" class="input" required>
+        <option value="residential">Residential</option>
+        <option value="commercial">Commercial</option>
+        <option value="industrial">Industrial</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="bill">Monthly Electricity Bill (₹)</label>
+      <input id="bill" type="number" class="input" placeholder="Enter your monthly bill (optional)">
+      <div class="note">Used for reference only — actual savings depend on system size.</div>
+    </div>
+
+    <div>
+      <label>System Size</label>
+      <div class="row">
+        <input id="sizeVal" class="size-input" type="number" placeholder="e.g. 3 or 0.5" min="0" step="any" required>
+        <select id="sizeUnit" class="unit-select">
+          <option value="kW">kW</option>
+          <option value="MW">MW</option>
+        </select>
+      </div>
+      <div class="note">Enter desired system size and choose unit (kW or MW). Subsidy applies only for residential 3–10 kW.</div>
+    </div>
+
+    <button type="submit"><i class="fas fa-calculator"></i> Calculate Savings</button>
+  </form>
+
+  <div id="result" class="result">
+    <div id="instCost"></div>
+    <div id="govSub"></div>
+    <div id="finalCost"></div>
+    <div id="monthlySave"></div>
+    <div id="yearlySave"></div>
+    <div id="payback"></div>
+  </div>
+</div>
+
+<script>
+const UNITS_PER_KW_PER_MONTH = 120;
+const RATE_PER_UNIT = 8;
+const CENTRAL_SUBSIDY = 78000;
+const STATE_SUBSIDY = 30000;
+const SPECIAL_3KW_COST = 200000;
+
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const type = document.getElementById("type").value;
+  const bill = parseFloat(document.getElementById("bill").value || 0);
+  const sizeVal = parseFloat(document.getElementById("sizeVal").value);
+  const unit = document.getElementById("sizeUnit").value;
+
+  if (isNaN(sizeVal) || sizeVal <= 0) {
+    alert("Please enter a valid system size.");
+    return;
+  }
+
+  let sizeKW = unit === "MW" ? sizeVal * 1000 : sizeVal;
+
+  if (sizeKW < 3 && !confirm("Selected system is below 3 kW — subsidy will not apply. Continue?")) return;
+
+  let basePerKW = 65000;
+  if (type === "commercial") basePerKW = 70000;
+  if (type === "industrial") basePerKW = 75000;
+  if (sizeKW >= 1000) basePerKW *= 0.8;
+
+  let installationCost = Math.abs(sizeKW - 3) < 0.001 ? SPECIAL_3KW_COST : Math.round(basePerKW * sizeKW);
+
+  let central = 0, state = 0;
+  if (type === "residential" && sizeKW >= 3 && sizeKW <= 10) {
+    central = CENTRAL_SUBSIDY;
+    state = STATE_SUBSIDY;
+  }
+  const totalSub = central + state;
+  const finalCost = Math.max(0, installationCost - totalSub);
+
+  const generatedUnitsPerMonth = sizeKW * UNITS_PER_KW_PER_MONTH;
+  const monthlySavings = generatedUnitsPerMonth * RATE_PER_UNIT;
+  const yearlySavings = monthlySavings * 12;
+
+  const paybackYears = yearlySavings > 0 ? (finalCost / yearlySavings) : null;
+
+  document.getElementById("instCost").innerHTML = `💰 <b>Total Installation Cost:</b> ₹${installationCost.toLocaleString()}`;
+  document.getElementById("govSub").innerHTML = totalSub
+    ? `🏛️ <b>Government Subsidy:</b> ₹${totalSub.toLocaleString()} (Central ₹${central.toLocaleString()} + State ₹${state.toLocaleString()})`
+    : `<b>No subsidy applicable</b> — valid for residential 3–10 kW only.`;
+  document.getElementById("finalCost").innerHTML = `💸 <b>Final Cost After Subsidy:</b> ₹${finalCost.toLocaleString()}`;
+  document.getElementById("monthlySave").innerHTML = `💡 <b>Monthly Generation:</b> ${Math.round(generatedUnitsPerMonth).toLocaleString()} units<br>➡️ Estimated Monthly Savings: ₹${Math.round(monthlySavings).toLocaleString()}`;
+  document.getElementById("yearlySave").innerHTML = `🌍 <b>Estimated Yearly Savings:</b> ₹${Math.round(yearlySavings).toLocaleString()}`;
+  document.getElementById("payback").innerHTML = paybackYears ? `⏳ <b>Payback Period:</b> ${paybackYears.toFixed(1)} years` : `⏳ <b>Payback:</b> N/A`;
+
+  document.getElementById("result").style.display = "block";
+});
+</script>
+
+{% include 'footer.html' %}
+{% include 'wp.html' %}
+
+</body>
+</html>

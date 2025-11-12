@@ -1,0 +1,228 @@
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+        --color-primary: #0077B6;
+        --color-secondary: #00B4D8;
+        --color-accent: #00B4D8;
+        --color-bg-dark: #001D3D;
+        --color-text-light: #EAF4F4;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    main {
+        min-height: 80vh;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* ======================= FOOTER STYLES ======================= */
+
+    .main-footer {
+        background-color: var(--color-bg-dark);
+        color: var(--color-text-light);
+        padding: 60px 25px 0;
+        font-size: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .main-footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50px;
+        width: 150%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+        animation: shine 5s linear infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -150%; }
+        50% { left: 0; }
+        100% { left: 150%; }
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1.5fr 1fr; 
+        gap: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-section h3 {
+        font-size: 18px;
+        color: var(--color-secondary);
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: var(--color-accent);
+        transform: translateX(5px);
+    }
+
+    /* Contact Info Alignment */
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .contact-item i {
+        color: var(--color-secondary);
+        min-width: 20px;
+        font-size: 16px;
+    }
+
+    .contact-item a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .contact-item a:hover {
+        color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    /* Social Media Icons */
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+        color: var(--color-text-light);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--color-primary);
+        color: white;
+        transform: scale(1.1);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .powered-by {
+        color: var(--color-accent);
+        font-weight: 600;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .contact-item {
+            justify-content: center;
+        }
+
+        .social-icons {
+            justify-content: center;
+        }
+    }
+</style>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-section about">
+            <h3>About Dev Sky Solar</h3>
+            <p>Committed to building a cleaner and brighter India through trusted solar energy solutions for homes, businesses, and industries.</p>
+        </div>
+
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/">Projects</a></li>
+                <li><a href="/">Sitemap</a></li>
+                <li><a href="/faq">FAQs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact-info">
+            <h3>Contact Info</h3>
+
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919403891308">+91 9403891308</a>
+            </div>
+
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:devskysolar@gmail.com">devskysolar@gmail.com</a>
+            </div>
+
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.app.goo.gl/WobLa4Z1jekSsodM7" target="_blank">
+                    Kurud, Dhamtari, Chhattisgarh, IN
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-section social">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+                <a href="https://facebook.com/devskysolar" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/devskysolar" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/devskysolar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://youtube.com/@devskysolar" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Dev Sky Solar. All Rights Reserved. | Powered by <a href="https://digiyash.tech" target="_blank" class="powered-by">
+            DigiYash
+        </a>
+    </div>
+</footer>

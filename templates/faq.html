@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs - Dev Sky Solar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+      --color-sun: #FFD60A;
+      --color-sky: #0077B6;
+      --color-green: #2ECC71;
+      --color-bg-gradient: linear-gradient(to right, #e3f2fd, #fffbea);
+      --color-text-dark: #333;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--color-bg-gradient);
+      color: var(--color-text-dark);
+    }
+
+    .faq-component-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 40px 25px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .faq-header h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--color-sky);
+      margin-bottom: 8px;
+    }
+
+    .faq-header p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    .faq-content-grid {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .owner-image-section {
+      text-align: center;
+      background-color: #f9fbff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+    }
+
+    .owner-image-section img {
+      width: 130px;
+      height: 130px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 3px solid var(--color-sun);
+      margin-bottom: 10px;
+    }
+
+    .owner-image-section h4 {
+      font-size: 18px;
+      color: var(--color-text-dark);
+      margin-bottom: 4px;
+    }
+
+    .owner-image-section p {
+      color: var(--color-green);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .owner-image-section small {
+      color: #666;
+      font-size: 13px;
+      display: block;
+    }
+
+    .faq-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 25px;
+      gap: 5px;
+    }
+
+    .tab-button {
+      background: transparent;
+      border: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 14px;
+      cursor: pointer;
+      color: #555;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab-button.active {
+      color: var(--color-sky);
+      border-bottom: 3px solid var(--color-sun);
+    }
+
+    .tab-button:hover {
+      color: var(--color-sky);
+    }
+
+    .faq-item {
+      border: 1px solid #eee;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 18px;
+      font-weight: 600;
+      background-color: #f7fbff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question span {
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .faq-question:hover {
+      background-color: #eef6ff;
+    }
+
+    .faq-question i {
+      color: var(--color-sky);
+      transition: transform 0.3s ease;
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+      color: #555;
+    }
+
+    .faq-answer p {
+      padding-bottom: 15px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 400px;
+      padding-top: 10px;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @media (max-width: 850px) {
+      .faq-content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .owner-image-section {
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .faq-header h2 {
+        font-size: 24px;
+      }
+
+      .tab-button {
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      .faq-question {
+        padding: 13px 15px;
+        font-size: 14px;
+      }
+
+      .faq-answer p {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<div class="faq-component-container">
+  <div class="faq-header">
+    <h2>FAQs</h2>
+    <p>Learn more about our mission, services, and the team behind sustainable solar innovation.</p>
+  </div>
+
+  <div class="faq-content-grid">
+    <!-- Left Section -->
+    <div class="faq-main-content">
+      <div class="faq-tabs">
+        {% for category in faqs.keys() %}
+        <button class="tab-button {% if loop.first %}active{% endif %}" data-tab="{{ category|lower }}">
+          {{ category }}
+        </button>
+        {% endfor %}
+      </div>
+
+      {% for category, items in faqs.items() %}
+      <div class="tab-content {% if loop.first %}active{% endif %}" id="{{ category|lower }}">
+        {% for faq in items %}
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>{{ faq.question }}</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>{{ faq.answer | safe }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right Section -->
+    <div class="owner-image-section">
+      <img src="/static/images/owner.jpg" alt="Owner">
+      <h4>Domendra Kumar</h4>
+      <p>Founder, Dev Sky Solar</p>
+      <small>Empowering India with sustainable and affordable solar energy solutions.</small>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}
+{% include 'wp.html' %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqContainer = document.querySelector('.faq-component-container');
+    const tabButtons = faqContainer.querySelectorAll('.tab-button');
+    const tabContents = faqContainer.querySelectorAll('.tab-content');
+    const faqQuestions = faqContainer.querySelectorAll('.faq-question');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.closest('.faq-item');
+        const tab = item.closest('.tab-content');
+
+        tab.querySelectorAll('.faq-item').forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+
+        item.classList.toggle('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

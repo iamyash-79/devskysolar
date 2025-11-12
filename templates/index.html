@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Sky Solar | Ignite Your Energy Independence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ======================= CSS STYLES (PREMIUM DYNAMIC THEME) ======================= */
+        :root {
+            --primary-navy: #0A192F;    /* Deep, Trustworthy Blue/Navy */
+            --electric-yellow: #00B4D8; /* Vibrant, High-Energy Yellow */
+            --eco-green: #00A36C;       /* Accent Green */
+            --bg-light: #F4F6F8;        /* Near-White Background */
+            --text-dark: #1a1a1a;
+            --text-light: #fff;
+            --max-w: 1200px;
+        }
+
+        /* Global & Reset */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding-top: 80px; /* Space for fixed header */
+        }
+        section {
+            padding: 5rem 2rem;
+            max-width: var(--max-w);
+            margin: auto;
+        }
+        h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        h2.section-heading {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        .text-center { text-align: center; }
+
+        /* Buttons (Consistent and Bold) */
+        .btn-bold {
+    background: #007bff; /* pure blue */
+    color: #ffffff;
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+}
+
+.btn-bold:hover {
+    background: #0056b3; /* deeper blue on hover */
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.9);
+    
+        }
+        .btn-bold:hover {
+            background: var(--text-light);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            color: var(--primary-navy);
+            border: 2px solid var(--primary-navy);
+        }
+
+        /* --- 1. HERO SECTION (HIGH IMPACT) --- */
+        .hero-section {
+            background: var(--primary-navy);
+            color: var(--text-light);
+            padding: 10rem 2rem 8rem;
+            max-width: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); 
+        }
+        .hero-content {
+            max-width: var(--max-w); width: 100%; margin: auto; display: flex; align-items: center; gap: 5%;
+        }
+        .hero-text { flex: 1; max-width: 650px; z-index: 2; }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; line-height: 1.05; margin-bottom: 1rem; color: var(--text-light);
+        }
+        .hero-text span { color: var(--electric-yellow); display: block; }
+        .hero-text p {
+            font-size: 1.4rem; margin-bottom: 2.5rem; opacity: 0.85; color: var(--bg-light);
+        }
+        .hero-image { flex: 1; max-width: 450px; z-index: 2; }
+        .hero-image img {
+            width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); border: 6px solid var(--electric-yellow);
+        }
+
+        /* --- 2. TRUST BADGES / HIGHLIGHTS SECTION --- */
+        .trust-section {
+            margin-top: -8rem; position: relative; z-index: 10; padding: 2rem 2rem;
+        }
+        .trust-grid {
+            background-color: var(--text-light); border-radius: 15px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); padding: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;
+        }
+        .badge-card {
+            text-align: center; border-right: 1px solid var(--bg-light); padding: 0 15px;
+        }
+        .badge-card:last-child { border-right: none; }
+        .badge-card i { font-size: 3rem; color: var(--eco-green); margin-bottom: 0.5rem; }
+        .badge-card h4 { font-size: 1.5rem; color: var(--primary-navy); margin-bottom: 0; }
+
+        /* --- 3. CORE SERVICES SECTION (Image Left) --- */
+        .core-services { padding-top: 5rem; }
+        .core-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center;
+        }
+        .service-list h3 { font-size: 2.5rem; }
+        .service-point { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .service-point i {
+            font-size: 1.5rem; color: var(--electric-yellow); background: var(--primary-navy); border-radius: 50%; padding: 10px; margin-right: 15px; flex-shrink: 0;
+        }
+        .service-point p strong { display: block; color: var(--primary-navy); font-size: 1.1rem; }
+        .service-image img {
+            width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* --- 4. TECHNOLOGY SECTION (NEW) --- */
+        .tech-section {
+            background-color: var(--primary-navy); 
+            color: var(--text-light);
+            max-width: none;
+            padding: 6rem 2rem;
+        }
+        .tech-section h2 {
+            color: var(--electric-yellow);
+            margin-bottom: 0.5rem;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
+        }
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid var(--eco-green);
+            padding: 30px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .tech-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .tech-card i {
+            font-size: 2.5rem;
+            color: var(--eco-green);
+            margin-bottom: 15px;
+        }
+        .tech-card h4 {
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        /* --- 5. COMMITMENT SECTION (NEW) --- */
+        .commitment-section {
+            background-color: var(--bg-light);
+        }
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .commitment-text h3 {
+            font-size: 2.5rem;
+            color: var(--eco-green);
+        }
+        .commitment-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .commitment-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- 6. FINAL CTA SECTION --- */
+        .final-cta {
+            background: var(--primary-navy); color: var(--text-light); text-align: center; max-width: none; margin: 0;
+        }
+        .final-cta h2 { color: var(--electric-yellow); font-size: 3.5rem; margin-bottom: 1.5rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-text { max-width: 100%; margin-bottom: 3rem; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-image { order: -1; max-width: 70%; margin-bottom: 1rem; }
+            .trust-section { margin-top: -4rem; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .core-grid { grid-template-columns: 1fr; }
+            .commitment-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 3rem; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .badge-card { border-right: none; border-bottom: 1px solid var(--bg-light); padding-bottom: 20px; margin-bottom: 15px; }
+            .badge-card:last-child { border-bottom: none; }
+            .final-cta h2 { font-size: 2.5rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'header.html' %}
+    
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text animate-on-scroll left">
+                    <h1>
+                        Ignite Your <span>Energy Future</span>
+                    </h1>
+                    <p>
+                        Dev Sky Solar delivers ultra-efficient, highly durable solar solutions across India. Achieve true energy independence and maximize your savings.
+                    </p>
+                    <a href="/calculator" class="btn-bold" target="_blank" rel="noopener noreferrer">
+    <i class="fas fa-calculator"></i> Get Instant Savings Report
+</a>
+                </div>
+                <div class="hero-image animate-on-scroll right">
+                    <img src="static/consult.jpg" alt="High contrast solar panels installation at sunset.">
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-section">
+            <div class="trust-grid">
+                <div class="badge-card animate-on-scroll scale-in">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>25 Year Warranty</h4>
+                    <p style="font-size:0.9rem;">Guaranteed performance assurance.</p>
+                </div>
+                <div class="badge-card animate-on-scroll scale-in" style="transition-delay:0.1s;">
+                    <i class="fas fa-handshake"></i>
+                    <h4>100% Transparency</h4>
+                    <p style="font-size:0.9rem;">Clear pricing and process every step.</p>
+                </div>
+                <div class="badge-card animate-on-scroll scale-in" style="transition-delay:0.2s;">
+                    <i class="fas fa-indian-rupee-sign"></i>
+                    <h4>Maximum Savings</h4>
+                    <p style="font-size:0.9rem;">Reduce bills by up to 90%.</p>
+                </div>
+                <div class="badge-card animate-on-scroll scale-in" style="transition-delay:0.3s;">
+                    <i class="fas fa-globe-asia"></i>
+                    <h4>Pan-India Presence</h4>
+                    <p style="font-size:0.9rem;">Service excellence across the nation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="core-services">
+            <h2 class="section-heading text-center animate-on-scroll">Our Proven Solar Process</h2>
+            <p class="text-center animate-on-scroll" style="max-width: 800px; margin: 0 auto 4rem; font-size: 1.15rem;">We handle everything from initial site survey to final commissioning, ensuring zero hassle for you.</p>
+
+            <div class="core-grid">
+                <div class="service-image animate-on-scroll left">
+                    <img src="static/expert.jpg" alt="Engineers installing solar panels">
+                </div>
+                <div class="service-list animate-on-scroll right">
+                    <div class="service-point">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p><strong>Detailed Site Survey & Design</strong></p>
+                            <p style="font-size:0.95rem;">Our experts use cutting-edge tools for precise shading analysis and custom system sizing.</p>
+                        </div>
+                    </div>
+                    <div class="service-point">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <p><strong>Documentation & Approvals</strong></p>
+                            <p style="font-size:0.95rem;">We manage all paperwork, government subsidies, and net metering approvals for you.</p>
+                        </div>
+                    </div>
+                    <div class="service-point">
+                        <i class="fas fa-wrench"></i>
+                        <div>
+                            <p><strong>Certified Installation & Commissioning</strong></p>
+                            <p style="font-size:0.95rem;">Quick, clean installation by certified technicians using only top-tier components.</p>
+                        </div>
+                    </div>
+                    <div class="service-point">
+                        <i class="fas fa-cogs"></i>
+                        <div>
+                            <p><strong>Monitoring & Lifetime Support</strong></p>
+                            <p style="font-size:0.95rem;">24/7 performance monitoring and comprehensive Annual Maintenance Contracts (AMC).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2 class="section-heading text-center animate-on-scroll" style="color:var(--electric-yellow);">Next-Generation Solar Technology</h2>
+            <p class="text-center animate-on-scroll" style="max-width: 800px; margin: 0 auto 4rem; font-size: 1.15rem; color: var(--bg-light);">We partner with world-leading manufacturers to bring you durable, high-efficiency solar components.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-card animate-on-scroll scale-in">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Tier-1 Mono PERC Panels</h4>
+                    <p style="font-size:0.95rem;">Higher energy yield in low-light conditions and superior temperature coefficient for India's heat.</p>
+                </div>
+                <div class="tech-card animate-on-scroll scale-in" style="transition-delay:0.1s;">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Smart Hybrid Inverters</h4>
+                    <p style="font-size:0.95rem;">Seamlessly manage power flow between solar, battery, and grid for ultimate efficiency.</p>
+                </div>
+                <div class="tech-card animate-on-scroll scale-in" style="transition-delay:0.2s;">
+                    <i class="fas fa-power-off"></i>
+                    <h4>Optimized Mounting Systems</h4>
+                    <p style="font-size:0.95rem;">Rust-proof, high-grade aluminum structures engineered for extreme weather resistance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="commitment-section">
+            <div class="commitment-grid">
+                <div class="commitment-image animate-on-scroll left">
+                    <img src="static/permit.jpg" alt="Commitment to green energy in India">
+                </div>
+                <div class="commitment-text animate-on-scroll right">
+                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--eco-green);">Commitment to a Greener India</h3>
+                    <h2 style="margin-top:0.5rem;">Our Mission: Energy for All</h2>
+                    <p>
+                        Dev Sky Solar is dedicated to making renewable energy accessible across every Indian state. Our focus is on empowering communities, reducing the national carbon footprint, and helping every home achieve energy independence.
+                    </p>
+                    <p style="margin-top:1rem;">
+                        We believe that investing in solar is an investment in the nation's future, providing stable power, creating jobs, and ensuring a cleaner environment for the next generation.
+                    </p>
+                    <a href="/about" class="btn-bold" style="background: var(--eco-green); color: var(--text-light); margin-top:2rem;">
+                        Read Our Story <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta full-width-section-wrapper">
+            <h2 class="animate-on-scroll">Ready to Power Your Home?</h2>
+            <p class="animate-on-scroll" style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem; color: var(--bg-light);">Join the thousands of homes and businesses maximizing savings with Dev Sky Solar's trusted technology.</p>
+            <a href="/leads" class="btn-bold animate-on-scroll" style="background: var(--electric-yellow);">
+                <i class="fas fa-calendar-alt"></i> Request Free Callback
+            </a>
+        </section>
+    </main>
+
+    {% include 'footer.html' %}
+    {% include 'wp.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('active'); }
+                    else { entry.target.classList.remove('active'); }
+                });
+            }, { threshold: 0.1 });
+            animateElements.forEach(el => observer.observe(el));
+            
+            // Header Toggle JS (Assumes .menu-toggle and .main-nav exist in header.html)
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            if(menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    function setupMenuToggle() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (menuToggle && mainNav) {
+            // Remove old listeners to avoid duplication
+            menuToggle.onclick = () => {
+                mainNav.classList.toggle('active');
+            };
+        } else {
+            // Retry if header is still loading (for Jinja include timing)
+            setTimeout(setupMenuToggle, 200);
+        }
+    }
+
+    setupMenuToggle();
+
+    // Optional: Scroll animations
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+    animateElements.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>

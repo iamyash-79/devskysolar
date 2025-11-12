@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Links - Dev Sky Solar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles & resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fdfdfd; /* Even lighter background for a crisp feel */
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Page Title for internal pages */
+        .page-title {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto; /* Vertically center */
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem; /* Slightly smaller than main hero text */
+            font-weight: 900;
+            color: var(--dark-text);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Standard Content Sections */
+        section:not(.full-width-section-wrapper) {
+            padding: 4.5rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            flex-grow: 1;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+
+        @media(min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Headings */
+        h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--dark-text);
+        }
+
+        h2.text-center {
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--solar-primary);
+        }
+
+        /* Full-Width Section Containers */
+        .full-width-section-wrapper {
+            width: 100%;
+            box-sizing: border-box;
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+        }
+
+        .full-width-section-wrapper .content-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .highlight.full .content-container.grid-2 {
+            grid-template-columns: 1fr 1fr;
+            max-width: 1400px;
+        }
+        .highlight.full .content-container.grid-2 > div:first-child {
+            order: 2;
+        }
+        .highlight.full .content-container.grid-2 > div:last-child {
+            order: 1;
+        }
+
+        .highlight {
+            background: var(--light-bg-color);
+        }
+
+        .highlight .content-container.grid-2 {
+            display: grid;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Call To Action Section */
+        .call-to-action {
+            background: var(--solar-primary);
+            color: var(--white-text);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .call-to-action h2 {
+            font-size: 3.8rem;
+            color: var(--white-text);
+            margin-bottom: 1.5rem;
+            text-shadow: none;
+        }
+
+        .call-to-action p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.8;
+        }
+
+        .call-to-action .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .call-to-action .cta-buttons .btn-primary,
+        .call-to-action .cta-buttons .btn-secondary {
+            padding: 1.1rem 2.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-align: center;
+            min-width: 220px;
+            box-sizing: border-box;
+            border: none;
+        }
+
+        .call-to-action .cta-buttons .btn-primary {
+            background: var(--white-text);
+            color: var(--solar-primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .call-to-action .cta-buttons .btn-primary:hover {
+            background: var(--light-bg-color);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .call-to-action .cta-buttons .btn-secondary {
+            background: transparent;
+            color: var(--white-text);
+            border: 2px solid var(--white-text);
+        }
+
+        .call-to-action .cta-buttons .btn-secondary:hover {
+            background: var(--white-text);
+            border-color: var(--white-text);
+            color: var(--solar-primary);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* General styles */
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: auto;
+            display: block;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--medium-text);
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* Specific styles for Quick Links page content */
+        .quick-links-content section {
+            background-color: var(--light-bg-color);
+            padding: 3.5rem 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .quick-links-content section h3 {
+            font-size: 2.2rem;
+            color: var(--solar-primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quick-links-content section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+            margin-bottom: 1.2rem;
+        }
+
+        .quick-links-content ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 1.5rem;
+        }
+        .quick-links-content ul li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+        .quick-links-content ol {
+            list-style: decimal;
+            margin-left: 25px;
+            margin-bottom: 1.5rem;
+        }
+        .quick-links-content ol li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+        .quick-links-content strong {
+            color: var(--dark-text);
+        }
+
+        /* Table styles for T&C (if applicable) */
+        .quick-links-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        .quick-links-content table th,
+        .quick-links-content table td {
+            border: 1px solid var(--border-light);
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 1rem;
+            color: var(--dark-text);
+        }
+        .quick-links-content table th {
+            background-color: var(--solar-primary);
+            color: var(--white-text);
+            font-weight: 700;
+        }
+        .quick-links-content table tr:nth-child(even) {
+            background-color: #f0f2f5;
+        }
+
+        /* For Career section */
+        .job-opening {
+            background-color: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .job-opening:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .job-opening h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--solar-accent-blue);
+            margin-bottom: 0.8rem;
+        }
+        .job-opening p strong {
+            color: var(--solar-primary);
+        }
+        .job-opening .apply-btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--solar-primary);
+            color: var(--white-text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .job-opening .apply-btn:hover {
+            background-color: var(--solar-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--solar-primary);
+            color: var(--white-text);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-to-top:hover {
+            background-color: var(--solar-primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- Scroll Animation (using Intersection Observer) --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-on-scroll.left {
+            transform: translateX(-50px);
+        }
+        .animate-on-scroll.left.active {
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll.right {
+            transform: translateX(50px);
+        }
+        .animate-on-scroll.right.active {
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll.scale-in {
+            transform: scale(0.9);
+        }
+        .animate-on-scroll.scale-in.active {
+            transform: scale(1);
+        }
+
+        /* --- MOBILE RESPONSIVENESS (duplicated from main for consistency) --- */
+        @media(max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            nav ul li {
+                font-size: 1rem;
+            }
+            .quote-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            section:not(.full-width-section-wrapper) {
+                padding: 3rem 1.5rem;
+            }
+
+            h2.text-center {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .full-width-section-wrapper .content-container {
+                padding: 0 1.5rem;
+            }
+
+            .highlight .content-container.grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .highlight.full .content-container.grid-2 > div:first-child {
+                order: unset;
+            }
+            .highlight.full .content-container.grid-2 > div:last-child {
+                order: unset;
+            }
+
+            .call-to-action h2 {
+                font-size: 2.8rem;
+            }
+            .call-to-action p {
+                font-size: 1.1rem;
+            }
+            .call-to-action .cta-buttons {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .call-to-action .cta-buttons .btn-primary,
+            .call-to-action .cta-buttons .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Quick links section mobile adjustments */
+            .quick-links-content section {
+                padding: 2.5rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .quick-links-content section h3 {
+                font-size: 1.8rem;
+                flex-direction: column; /* Stack icon and text */
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .quick-links-content section h3 i {
+                margin-right: 0 !important;
+                margin-bottom: 10px;
+            }
+            .quick-links-content section p,
+            .quick-links-content ul li,
+            .quick-links-content ol li {
+                font-size: 1rem;
+            }
+            .quick-links-content table th,
+            .quick-links-content table td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            .job-opening {
+                padding: 1.5rem;
+            }
+            .job-opening h4 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<main>
+    <section>
+        <h2 class="text-center animate-on-scroll">Important Information at Your Fingertips</h2>
+        <p class="text-center animate-on-scroll" style="max-width: 800px; margin: 0 auto 2rem auto; color: var(--medium-text);">Access our privacy policy, terms and conditions, and career opportunities easily. Click on the links below to jump to the relevant section.</p>
+
+        <nav class="quick-nav" style="text-align: center; margin-bottom: 3rem;">
+            <a href="#privacy" class="btn-secondary" style="background: var(--solar-accent-blue); color: var(--white-text); padding: 0.8rem 1.8rem; border-radius: 6px; text-decoration: none; margin: 0 10px; display: inline-block; transition: all 0.3s ease; border: none;">
+                <i class="fas fa-user-shield" style="margin-right: 8px;"></i> Privacy Policy
+            </a>
+            <a href="#terms" class="btn-secondary" style="background: var(--solar-accent-blue); color: var(--white-text); padding: 0.8rem 1.8rem; border-radius: 6px; text-decoration: none; margin: 0 10px; display: inline-block; transition: all 0.3s ease; border: none;">
+                <i class="fas fa-file-contract" style="margin-right: 8px;"></i> Terms & Conditions
+            </a>
+            <a href="#careers" class="btn-secondary" style="background: var(--solar-accent-blue); color: var(--white-text); padding: 0.8rem 1.8rem; border-radius: 6px; text-decoration: none; margin: 0 10px; display: inline-block; transition: all 0.3s ease; border: none;">
+                <i class="fas fa-briefcase" style="margin-right: 8px;"></i> Careers
+            </a>
+        </nav>
+
+        <div class="quick-links-content">
+            <section id="privacy" class="animate-on-scroll">
+                <h3><i class="fas fa-user-shield"></i> Privacy Policy</h3>
+                <p><strong>Last Updated: July 8, 2025</strong></p>
+                <p>Dev Sky Solar ("we," "our," or "us") is committed to protecting the privacy of our website visitors and clients. This Privacy Policy outlines the types of information we collect, how we use it, and the steps we take to safeguard your personal data.</p>
+
+                <h4>1. Information We Collect</h4>
+                <ul>
+                    <li><strong>Personal Information:</strong> We may collect personal information that you voluntarily provide to us when you fill out forms on our website (e.g., contact forms, quote requests), subscribe to newsletters, or communicate with us directly. This may include your name, email address, phone number, physical address, and details about your solar energy needs.</li>
+                    <li><strong>Usage Data:</strong> We automatically collect information about your interaction with our website, such as your IP address, browser type, operating system, referring URLs, pages viewed, and dates/times of visits. This data helps us improve our website's functionality and user experience.</li>
+                    <li><strong>Cookies and Tracking Technologies:</strong> We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</li>
+                </ul>
+
+                <h4>2. How We Use Your Information</h4>
+                <p>We use the collected information for various purposes, including:</p>
+                <ul>
+                    <li>To provide and maintain our services.</li>
+                    <li>To respond to your inquiries and provide customer support.</li>
+                    <li>To send you updates, promotional materials, and newsletters (if you opt-in).</li>
+                    <li>To analyze and improve our website's performance and user experience.</li>
+                    <li>To detect, prevent, and address technical issues.</li>
+                    <li>To comply with legal obligations.</li>
+                </ul>
+
+                <h4>3. Sharing Your Information</h4>
+                <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties without your consent, except for the following:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> We may share data with trusted third-party service providers who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential.</li>
+                    <li><strong>Legal Requirements:</strong> We may disclose your information when required to do so by law or in response to valid requests by public authorities.</li>
+                </ul>
+
+                <h4>4. Data Security</h4>
+                <p>We implement a variety of security measures to maintain the safety of your personal information when you submit your information. However, no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+
+                <h4>5. Your Rights</h4>
+                <p>Depending on your location, you may have certain rights regarding your personal data, including the right to access, update, or delete your information. Please contact us to exercise these rights.</p>
+
+                <h4>6. Changes to This Privacy Policy</h4>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+                <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:contact@devskysolar.in">contact@devskysolar.in</a>.</p>
+            </section>
+
+            <section id="terms" class="animate-on-scroll">
+                <h3><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
+                <p><strong>Effective Date: July 8, 2025</strong></p>
+                <p>Welcome to Dev Sky Solar. By accessing and using our website and services, you agree to comply with and be bound by the following Terms & Conditions. Please review them carefully.</p>
+
+                <h4>1. Acceptance of Terms</h4>
+                <p>These Terms & Conditions ("Terms") govern your access to and use of the Dev Sky Solar website (<a href="/">devskysolar.in</a>) and any services offered by Dev Sky Solar (the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+
+                <h4>2. Services Provided</h4>
+                <p>Dev Sky Solar provides solar energy solutions, including consultation, design, installation, and maintenance of solar panel systems for residential, commercial, and industrial properties. All services are subject to a separate written agreement.</p>
+
+                <h4>3. User Obligations</h4>
+                <ul>
+                    <li>You agree to use the Service only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Service.</li>
+                    <li>You agree not to misuse the website by knowingly introducing viruses, trojans, worms, logic bombs, or other material that is malicious or technologically harmful.</li>
+                    <li>You are responsible for maintaining the confidentiality of any account information and for all activities that occur under your account.</li>
+                </ul>
+
+                <h4>4. Intellectual Property</h4>
+                <p>All content on this website, including text, graphics, logos, images, and software, is the property of Dev Sky Solar or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, modify, or create derivative works of any content without our express written permission.</p>
+
+                <h4>5. Limitation of Liability</h4>
+                <p>Dev Sky Solar will not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence), or any other legal theory, whether or not we have been informed of the possibility of such damage.</p>
+
+                <h4>6. Governing Law</h4>
+                <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+
+                <h4>7. Changes to Terms</h4>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+                <p>For any questions regarding these Terms & Conditions, please contact us at <a href="mailto:contact@devskysolar.in">contact@devskysolar.in</a>.</p>
+            </section>
+
+            <section id="careers" class="animate-on-scroll">
+                <h3><i class="fas fa-briefcase"></i> Careers at Dev Sky Solar</h3>
+                <p>Join Dev Sky Solar and be a part of a dynamic team dedicated to powering a sustainable future. We are always looking for passionate and talented individuals to help us grow and innovate in the solar energy sector.</p>
+
+                <h4>Why Work With Us?</h4>
+                <ul>
+                    <li>Contribute to a greener planet.</li>
+                    <li>Work with cutting-edge solar technology.</li>
+                    <li>Opportunities for professional growth and development.</li>
+                    <li>Collaborative and supportive work environment.</li>
+                    <li>Competitive compensation and benefits.</li>
+                </ul>
+
+                <h4>Current Job Openings:</h4>
+
+                <div class="job-opening animate-on-scroll">
+                    <h4>Solar Installation Technician</h4>
+                    <p><strong>Location:</strong> Raipur, Chhattishgarh, India</p>
+                    <p>We are seeking experienced Solar Installation Technicians to join our field team. Responsibilities include installing, maintaining, and repairing solar photovoltaic systems according to industry standards and safety guidelines.</p>
+                    <p><strong>Requirements:</strong> Min 2+ years experience in solar installation, ITI certification, strong understanding of electrical systems, ability to work at heights.</p>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+
+                <div class="job-opening animate-on-scroll">
+                    <h4>Solar Sales Executive</h4>
+                    <p><strong>Location:</strong> Raipur, Chhattishgarh, India</p>
+                    <p>Are you a persuasive communicator with a passion for renewable energy? We need a Sales Executive to identify new business opportunities, build client relationships, and drive sales of our solar solutions.</p>
+                    <p><strong>Requirements:</strong> Bachelor's degree in Business/Marketing or related field, 3+ years in B2B sales (preferably in solar/energy sector), excellent communication and negotiation skills.</p>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+
+                <div class="job-opening animate-on-scroll">
+                    <h4>Project Manager (Solar PV)</h4>
+                    <p><strong>Location:</strong> Raipur, Chhattishgarh, India</p>
+                    <p>Manage solar PV projects from conception to completion. This role involves planning, execution, monitoring, and closing projects, ensuring they are completed on time, within budget, and to the highest quality standards.</p>
+                    <p><strong>Requirements:</strong> Bachelor's degree in Engineering or relevant field, PMP certification preferred, 5+ years experience in solar project management, strong leadership and organizational skills.</p>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+
+                <p>Don't see a position that fits your profile but believe you can contribute to Dev Sky Solar? We encourage you to send your resume to <a href="mailto:contact@devskysolar.in">contact@devskysolar.in</a> with your area of interest.</p>
+                <p>We are an equal opportunity employer and value diversity at our company. We do not discriminate on the basis of race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or disability status.</p>
+            </section>
+        </div>
+    </section>
+
+    ---
+
+    <section class="call-to-action full-width-section-wrapper">
+        <div class="content-container animate-on-scroll">
+            <h2 class="text-center">Have More Questions? We're Here to Help!</h2>
+            <p class="text-center">Our team is always ready to assist you with any inquiries regarding our policies or career opportunities.</p>
+            <div class="cta-buttons">
+                <a href="contact" class="btn-primary"><i class="fas fa-envelope"></i> Contact Our Team</a>
+                <a href="services" class="btn-secondary"><i class="fas fa-lightbulb"></i> Explore Our Services</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include 'footer.html' %}
+
+<div class="scroll-to-top" id="scrollToTopBtn">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile nav when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll for internal links on this page
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Add offset for sticky header
+                    const headerOffset = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerOffset - 20; // Additional padding
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Unobserve after animation if it only needs to play once
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: remove 'active' class when element scrolls out of view
+                    // entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Show/hide scroll-to-top button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show after scrolling 300px down
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Scroll to top on click
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

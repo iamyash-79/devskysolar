@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Lead Inquiry | Dev Sky Solar</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      margin: 40px auto;
+      max-width: 1200px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    /* Left Side - Image Slider */
+    .slider {
+      flex: 1 1 50%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 24s infinite linear;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      0%, 30% { transform: translateX(0%); }
+      33%, 63% { transform: translateX(-100%); }
+      66%, 96% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
+    /* Right Side - Form */
+    .form-container {
+      flex: 1 1 50%;
+      padding: 50px 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      color: #002b5b;
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    p.sub-text {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 10px 0;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: #333;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .tab-buttons button.active {
+      background: #002b5b;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #111;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button.submit-btn {
+      width: 100%;
+      background: #002b5b;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button.submit-btn:hover {
+      background: #001d40;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px 40px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 900px) {
+      .main-section { flex-direction: column; margin: 20px; }
+      .slider { height: 300px; }
+      .form-container { padding: 30px 25px; }
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'header.html' %}
+
+  <div class="main-section">
+    <!-- Left: Image Slider -->
+    <div class="slider">
+      <div class="slides">
+        <img src="/static/images/solar1.jpg" alt="Solar Installation">
+        <img src="/static/images/solar2.jpg" alt="Solar Panels">
+        <img src="/static/images/solar3.jpg" alt="Clean Energy">
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="form-container">
+      <h2>Schedule a FREE Solar Consultation</h2>
+      <p class="sub-text">Fill the form and our team will contact you shortly.</p>
+
+      <div class="tab-buttons">
+        <button class="active" data-type="Residential">Residential</button>
+        <button data-type="Commercial">Commercial</button>
+        <button data-type="Industrial">Industrial</button>
+      </div>
+
+      <form id="leadForm">
+
+        <div class="form-group company-field" style="display: none;">
+          <label for="company">Company Name *</label>
+          <input type="text" id="company" name="company">
+        </div>
+        
+        <div class="form-group">
+          <label id="nameLabel" for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address / Location *</label>
+          <textarea id="address" name="address" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="kw">KW Required (optional)</label>
+          <input type="text" id="kw" name="kw">
+        </div>
+
+        <div class="form-group">
+          <label for="time">Preferred Installation Time</label>
+          <select id="time" name="time">
+            <option value="">Select preferred time</option>
+            <option>Just Now</option>
+            <option>Within 1 week</option>
+            <option>Next 1 month</option>
+            <option>Not decided yet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments (optional)</label>
+          <textarea id="comments" name="comments"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Submit Details
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="thankYouPopup">
+    <div class="popup-content">
+      <i class="fas fa-check-circle" style="color:#28a745; font-size:48px;"></i>
+      <h3>Thank You!</h3>
+      <p id="popupMsg" style="color:black;">Your inquiry has been submitted successfully. Our team will contact you soon.</p>
+    </div>
+  </div>
+
+  {% include 'footer.html' %}
+
+  <script>
+  const tabs = document.querySelectorAll('.tab-buttons button');
+  const nameLabel = document.getElementById('nameLabel');
+  const companyField = document.querySelector('.company-field');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const type = tab.dataset.type;
+
+      if (type === 'Commercial' || type === 'Industrial') {
+        companyField.style.display = 'block';
+        nameLabel.textContent = 'Contact Person *';
+        document.getElementById('company').required = true;
+      } else {
+        companyField.style.display = 'none';
+        nameLabel.textContent = 'Full Name *';
+        document.getElementById('company').required = false;
+      }
+    });
+  });
+
+  const form = document.getElementById('leadForm');
+  const popup = document.getElementById('thankYouPopup');
+  const popupMsg = document.getElementById('popupMsg');
+  const submitBtn = form.querySelector('button');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('/submit_lead', { method: 'POST', body: formData });
+      const data = await res.json();
+
+      if (data.success) {
+        popupMsg.textContent = data.message;
+        popup.style.display = 'flex';
+        form.reset();
+        setTimeout(() => popup.style.display = 'none', 4000);
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      alert('Server error: ' + err.message);
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Details';
+  });
+</script>
+
+</body>
+</html>

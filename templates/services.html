@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services - Dev Sky Solar</title>
+  <link rel="canonical" href="https://devskysolar.in/services" />
+  <meta name="description" content="Dev Sky Solar offers end-to-end solar energy solutions — from consultation and design to installation, maintenance, and subsidy support." />
+  <meta name="keywords" content="Dev Sky Solar services, solar panel installation, solar maintenance, solar consultation, renewable energy solutions, solar Chhattisgarh" />
+  <meta name="author" content="Dev Sky Solar" />
+
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --blue: #0077B6;
+      --light-blue: #CAF0F8;
+      --dark-blue: #023E8A;
+      --white: #fff;
+      --text-dark: #1a1a1a;
+      --text-light: #555;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Roboto", sans-serif;
+      background: #f8fbfd;
+      color: var(--text-dark);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    
+    .page-header p {
+      font-size: 1.2rem;
+      color: #dbe9f5;
+    }
+
+    /* ===== Intro Section ===== */
+    .intro {
+      max-width: 850px;
+      margin: 3rem auto;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+
+    /* Header Section */
+    .page-header {
+      background: linear-gradient(rgba(2, 62, 138, 0.8), rgba(0, 119, 182, 0.7)),
+        url("/static/services/banner.jpg") center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 7rem 1rem;
+    }
+
+    .page-header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3.3rem;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-top: 1rem;
+    }
+
+    /* Services Grid */
+    .services-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .service-card.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-image {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .service-content {
+      padding: 1.8rem;
+    }
+
+    .service-content h3 {
+      color: var(--blue);
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .service-content p {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-content ul {
+      padding-left: 1.2rem;
+      margin: 0.6rem 0 0;
+      color: var(--text-light);
+    }
+
+    .service-content li {
+      margin: 0.3rem 0;
+      list-style: disc;
+    }
+
+    /* CTA Section */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--blue), var(--dark-blue));
+      color: var(--white);
+      padding: 5rem 2rem;
+      margin-top: 6rem;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      font-family: "Playfair Display", serif;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .cta a {
+      background: var(--white);
+      color: var(--blue);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: var(--light-blue);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.4rem;
+      }
+      .service-content h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  {% include 'header.html' %}
+  
+  <p class="intro fade-up">
+    At <strong>Dev Sky Solar</strong>, we follow a mission — to make solar energy simple, efficient, and sustainable for every Indian home and business.  
+    Here’s how our team transforms your space into a solar powerhouse.
+  </p>
+
+  <section class="services-container">
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/consult.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-comments"></i> Solar Consultation</h3>
+        <p>We begin by understanding your energy needs, property layout, and budget goals to craft a tailored solar plan.</p>
+        <ul>
+          <li>On-site energy audit</li>
+          <li>Return on Investment estimation</li>
+          <li>Cost-saving analysis report</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/design.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-drafting-compass"></i> Design & Engineering</h3>
+        <p>Our design team uses advanced CAD software and solar simulation tools for the most efficient energy output.</p>
+        <ul>
+          <li>Custom system layout</li>
+          <li>Shadow and roof analysis</li>
+          <li>Energy yield forecasting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/installation.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i> Installation & Commissioning</h3>
+        <p>Certified engineers install your system using premium panels, inverters, and mounting structures with top safety standards.</p>
+        <ul>
+          <li>Professional on-site installation</li>
+          <li>Performance testing & inspection</li>
+          <li>System activation & training</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/maintain.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-gear"></i> Maintenance & AMC</h3>
+        <p>We offer affordable Annual Maintenance Contracts (AMC) and on-demand checkups to ensure consistent solar output.</p>
+        <ul>
+          <li>Cleaning & servicing</li>
+          <li>Performance optimization</li>
+          <li>24/7 service support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/monitor.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-satellite-dish"></i> Smart Monitoring</h3>
+        <p>We integrate real-time IoT monitoring systems so you can track generation, savings, and efficiency from anywhere.</p>
+        <ul>
+          <li>Cloud-based monitoring app</li>
+          <li>Instant performance alerts</li>
+          <li>Remote diagnostics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image" style="background-image: url('/static/subsidy.jpg');"></div>
+      <div class="service-content">
+        <h3><i class="fa-solid fa-file-invoice-dollar"></i> Subsidy & Paperwork Assistance</h3>
+        <p>We manage all your solar documentation — from government subsidy applications to DISCOM net metering approvals.</p>
+        <ul>
+          <li>MNRE and State subsidy filing</li>
+          <li>DISCOM approvals</li>
+          <li>System warranty paperwork</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="cta">
+    <h2>Power Your Future with Dev Sky Solar ⚡</h2>
+    <p>Start your solar journey today with trusted experts in renewable energy solutions. Let’s create a cleaner, brighter tomorrow.</p>
+    <a href="/leads"><i class="fa-solid fa-phone"></i> Get Free Consultation</a>
+  </section>
+
+  {% include 'footer.html' %}
+  {% include 'wp.html' %}
+
+  <script>
+    // Fade-up animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".service-card");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("active");
+        });
+      }, { threshold: 0.2 });
+      cards.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

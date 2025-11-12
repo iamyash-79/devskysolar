@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Dev Sky Solar</title>
+  
+  <!-- ✅ Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- ✅ Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fbff;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    .highlight {
+      color: #00a36c;
+    }
+    .shadow-glow {
+      box-shadow: 0 10px 30px rgba(0, 100, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <!-- ===== Include Header ===== -->
+  {% include 'header.html' %}
+
+  <!-- ===== Hero Section ===== -->
+  <section class="relative bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-700 text-white py-24 mt-8">
+    <div class="max-w-6xl mx-auto text-center px-6 relative z-10">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+        About <span class="text-emerald-400">Us</span>
+      </h1>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed">
+        A new-age solar company built with passion, precision, and purpose —  
+        bringing clean, affordable energy solutions to homes and businesses across India.
+      </p>
+    </div>
+    <div class="absolute inset-0 bg-[url('{{ url_for('static', filename='solar_building.jpg') }}')] bg-cover bg-center opacity-10"></div>
+  </section>
+
+  <!-- ===== Intro Section ===== -->
+  <section class="py-20 bg-gradient-to-b from-white to-blue-50">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      
+      <div class="relative">
+        <img src="{{ url_for('static', filename='design.jpg') }}" alt="Solar Installation"
+             class="rounded-2xl shadow-glow hover:shadow-2xl transition duration-500 w-full">
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/10 to-transparent rounded-2xl"></div>
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold text-blue-900 mb-4">Empowering a Brighter Tomorrow</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Dev Sky Solar was founded with a simple yet powerful goal —  
+          to make clean solar energy accessible and affordable for everyone.  
+          Our small but skilled team brings together expertise in energy design, installation, and innovation.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          We may be a young company, but our vision is strong —  
+          to become a trusted name in sustainable power by focusing on quality, trust, and long-term customer satisfaction.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Mission / Vision / Why Choose Us ===== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+      
+      <div class="bg-white rounded-2xl shadow-glow p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+        <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-sun"></i></div>
+        <h3 class="text-2xl font-semibold text-blue-800 mb-3">Our Mission</h3>
+        <p class="text-gray-600">
+          To empower communities with sustainable solar energy solutions  
+          that are efficient, reliable, and environmentally friendly.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-glow p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+        <div class="text-emerald-600 text-5xl mb-4"><i class="fas fa-earth-asia"></i></div>
+        <h3 class="text-2xl font-semibold text-blue-800 mb-3">Our Vision</h3>
+        <p class="text-gray-600">
+          To be among India’s most trusted solar brands —  
+          powering a cleaner, greener nation one rooftop at a time.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-glow p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+        <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-bolt"></i></div>
+        <h3 class="text-2xl font-semibold text-blue-800 mb-3">Why Choose Us</h3>
+        <p class="text-gray-600">
+          Genuine advice, quality components, transparent pricing,  
+          and a personal touch — we care about every project, big or small.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Founder Message ===== -->
+  <section class="bg-gradient-to-r from-emerald-50 to-blue-50 py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <img src="{{ url_for('static', filename='founder.jpeg') }}" alt="Founder Photo" class="w-28 h-28 rounded-full mx-auto mb-6 shadow-md object-cover">
+      <h3 class="text-2xl font-bold text-blue-900 mb-3">A Word from Our Founder</h3>
+      <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        “We started Dev Sky Solar with a belief that renewable energy should not be a luxury —  
+        it should be a right for every household and business.  
+        We may be at the beginning of our journey, but our goal is clear:  
+        to power India’s future with honesty, innovation, and care.”
+      </p>
+      <p class="text-blue-800 font-semibold mt-4">– Founder, Dev Sky Solar</p>
+    </div>
+  </section>
+
+  <!-- ===== Early Milestones ===== -->
+  <section class="bg-blue-900 text-white py-20 text-center">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-3xl font-bold text-emerald-400">2024</h3>
+        <p class="opacity-90">Dev Sky Solar was founded with a mission to bring sustainable energy solutions to central India.</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-emerald-400">2025</h3>
+        <p class="opacity-90">Initial projects under development with a growing portfolio of residential and commercial inquiries.</p>
+      </div>
+      <div>
+        <h3 class="text-3xl font-bold text-emerald-400">Future</h3>
+        <p class="opacity-90">Aiming to complete our first 100 kW installation milestone and expand service coverage nationwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Call To Action ===== -->
+  <section class="text-center py-20 bg-gradient-to-b from-blue-900 to-blue-800 text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Let’s Build a Brighter Future Together</h2>
+    <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Whether you’re planning your first solar setup or seeking expert consultation —  
+    we’re here to help you take your first step toward energy independence.</p>
+    <a href="/leads" 
+       class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition">
+       <i class="fas fa-solar-panel mr-2"></i> Get a Free Consultation
+    </a>
+  </section>
+
+  <!-- ===== Include Footer ===== -->
+  {% include 'footer.html' %}
+  {% include 'wp.html' %}
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --color-primary: #0077B6;
+    --color-accent: #00B4D8;
+    --color-dark: #023E8A;
+    --color-bg: #E8F5FF;
+    --color-white: #fff;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== SLIM DARK BLUE TOP BAR ===== */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #002855, #004080);
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 0; /* Slimmed down */
+    font-weight: 500;
+    z-index: 1200;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.top-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Login Dropdown */
+.login-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.login-btn {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-radius: 6px;
+    z-index: 2000;
+}
+
+.dropdown-menu a {
+    color: #004080;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #e6f0ff;
+}
+
+.login-dropdown.active .dropdown-menu {
+    display: block;
+}
+
+/* ===== MAIN HEADER ===== */
+body {
+    padding-top: 80px; /* Adjusted for fixed slim bar + header */
+}
+
+.main-header {
+    background: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.1);
+    position: fixed;
+    top: 20px; /* below slim bar */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6px 20px; /* Slim header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo img {
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Navigation */
+.main-nav {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cta-button { display: none; }
+    .menu-toggle { display: block; }
+
+    .main-nav {
+        position: absolute;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .main-nav.active { display: flex; }
+
+    .nav-links { flex-direction: column; gap: 0; }
+    .nav-links li { width: 100%; border-bottom: 1px solid #cce7ff; }
+    .nav-links a { display: block; padding: 10px 20px; }
+    .nav-links a::after { display: none; }
+}
+</style>
+
+<!-- ===== Top Bar ===== -->
+<div class="top-bar">
+  <div class="top-container">
+    <div class="top-left">Welcome</div>
+    <div class="login-dropdown">
+      <button class="login-btn">Login ▼</button>
+      <div class="dropdown-menu">
+        <a href="https://consumer.pmsuryaghar.gov.in/consumer/#/login" target="_blank" rel="noopener">Consumer Login</a>
+        <a href="https://vendor.pmsuryaghar.gov.in/vendor/#/login" target="_blank" rel="noopener">Vendor Login</a>
+        <a href="/login" rel="noopener">Admin Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Dropdown Script ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown = document.querySelector(".login-dropdown");
+  const button = dropdown.querySelector(".login-btn");
+
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+  });
+
+  document.addEventListener("click", () => {
+    dropdown.classList.remove("active");
+  });
+});
+</script>
+
+<!-- ===== Header ===== -->
+<header class="main-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='header.png') }}" alt="Dev Sky Solar Logo">
+    </div>
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/">Projects</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="/leads" class="cta-button">Get Quote</a>
+    <button class="menu-toggle">&#9776;</button>
+  </div>
+</header>
+
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('.main-nav').classList.toggle('active');
+});
+</script>
